@@ -1,3 +1,5 @@
+## Universidad Católica de Honduras
+
 # Examen Final – Programación de Negocios UNICAH
 
 Proyecto de personalización de Odoo 20 para la Universidad Católica de Honduras
@@ -12,7 +14,7 @@ desarrollados para el examen final.
 | Número de cuenta | 0801200418650 |
 | Universidad | Universidad Católica de Honduras (UNICAH) |
 | Asignatura | Programación de Negocios |
-| Docente | [Completar] |
+| Docente | Ingeniero Ludwing Navarro |
 | Sección | [Completar] |
 | Periodo académico | [Completar] |
 
