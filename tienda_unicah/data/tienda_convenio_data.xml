@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="convenio_estudiantil" model="tienda.convenio">
+        <field name="name">Convenio estudiantil</field>
+        <field name="tipo_cliente">estudiante</field>
+        <field name="porcentaje">15</field>
+        <field name="fecha_inicio" eval="'2025-01-01'"/>
+        <field name="fecha_fin" eval="'2030-12-31'"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="convenio_docente" model="tienda.convenio">
+        <field name="name">Convenio docente</field>
+        <field name="tipo_cliente">docente</field>
+        <field name="porcentaje">10</field>
+        <field name="fecha_inicio" eval="'2025-01-01'"/>
+        <field name="fecha_fin" eval="'2030-12-31'"/>
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>

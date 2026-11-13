@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_tienda_convenio_list" model="ir.ui.view">
+        <field name="name">tienda.convenio.list</field>
+        <field name="model">tienda.convenio</field>
+        <field name="arch" type="xml">
+            <list string="Convenios UNICAH" decoration-muted="not active">
+                <field name="name"/>
+                <field name="tipo_cliente"/>
+                <field name="porcentaje"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="active" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tienda_convenio_form" model="ir.ui.view">
+        <field name="name">tienda.convenio.form</field>
+        <field name="model">tienda.convenio</field>
+        <field name="arch" type="xml">
+            <form string="Convenio UNICAH">
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archivado"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_title">
+                        <label for="name" string="Nombre"/>
+                        <h1>
+                            <field name="name" placeholder="Ej. Convenio estudiantil"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="tipo_cliente"/>
+                            <field name="porcentaje"/>
+                        </group>
+                        <group>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tienda_convenio_search" model="ir.ui.view">
+        <field name="name">tienda.convenio.search</field>
+        <field name="model">tienda.convenio</field>
+        <field name="arch" type="xml">
+            <search string="Buscar convenios">
+                <field name="name"/>
+                <field name="tipo_cliente"/>
+                <filter
+                    name="filtro_activos"
+                    string="Activos"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="filtro_archivados"
+                    string="Archivados"
+                    domain="[('active', '=', False)]"
+                />
+                <group>
+                    <filter
+                        name="agrupar_tipo_cliente"
+                        string="Tipo de cliente"
+                        context="{'group_by': 'tipo_cliente'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_tienda_convenio" model="ir.actions.act_window">
+        <field name="name">Convenios UNICAH</field>
+        <field name="res_model">tienda.convenio</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Cree el primer convenio UNICAH
+            </p>
+            <p>
+                Defina el tipo de cliente, el porcentaje y las fechas
+                de vigencia del convenio.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_tienda_convenio"
+        name="Convenios UNICAH"
+        parent="sale.menu_sale_config"
+        action="action_tienda_convenio"
+        sequence="50"
+        groups="sales_team.group_sale_salesman"
+    />
+
+</odoo>

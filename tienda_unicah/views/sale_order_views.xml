@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_order_form_tienda_unicah" model="ir.ui.view">
+        <field name="name">sale.order.form.tienda.unicah</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_aplicar_convenio"
+                    type="object"
+                    string="Aplicar convenio"
+                    class="btn-secondary"
+                    invisible="state not in ('draft', 'sent') or convenio_aplicado or not convenio_id"
+                />
+            </xpath>
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="tipo_cliente"/>
+                <field name="convenio_id" options="{'no_create': True}"/>
+                <field name="convenio_aplicado" readonly="1"/>
+                <field name="monto_ahorro" widget="monetary"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_order_tree_tienda_unicah" model="ir.ui.view">
+        <field name="name">sale.order.list.tienda.unicah</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field
+                    name="monto_ahorro"
+                    sum="Ahorro"
+                    widget="monetary"
+                    optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sales_order_filter_tienda_unicah" model="ir.ui.view">
+        <field name="name">sale.order.search.tienda.unicah</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="convenio_id"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <filter
+                    name="con_convenio"
+                    string="Con convenio"
+                    domain="[('convenio_aplicado', '=', True)]"
+                />
+            </xpath>
+
+            <xpath expr="//group" position="inside">
+                <filter
+                    name="agrupar_convenio"
+                    string="Convenio"
+                    context="{'group_by': 'convenio_id'}"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
