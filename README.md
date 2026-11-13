@@ -216,7 +216,9 @@ custom_addons/
 ├── unicah_prestamos/
 └── docs/
     ├── justificacion.md
-    └── capturas.md
+    ├── justificacion_borrador.pdf
+    ├── capturas.md
+    └── generar_pdf.py
 ```
 
 ## Permisos de seguridad
