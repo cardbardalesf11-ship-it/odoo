@@ -15,8 +15,6 @@ desarrollados para el examen final.
 | Universidad | Universidad Católica de Honduras (UNICAH) |
 | Asignatura | Programación de Negocios |
 | Docente | Ingeniero Ludwing Navarro |
-| Sección | [Completar] |
-| Periodo académico | [Completar] |
 
 ## Descripción
 
