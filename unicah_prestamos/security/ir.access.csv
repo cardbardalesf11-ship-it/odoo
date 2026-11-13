@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_unicah_prestamo_user,unicah.prestamo usuario interno,unicah.prestamo,base.group_user,r,
+access_unicah_prestamo_salesman,unicah.prestamo vendedor,unicah.prestamo,sales_team.group_sale_salesman,cru,
+access_unicah_prestamo_manager,unicah.prestamo administrador,unicah.prestamo,sales_team.group_sale_manager,crud,
