@@ -202,8 +202,12 @@ Cobertura de las pruebas:
 
 ### Pruebas visuales en el navegador
 
-Las capturas reales se tomarán en la interfaz de Odoo siguiendo la lista de
-`docs/capturas.md`. En este documento no se afirma que esas capturas ya existan.
+Se tomaron 26 capturas reales de la interfaz de Odoo 20 el 13 de noviembre de
+2026. Están guardadas en `docs/capturas/` y se insertaron en
+`docs/justificacion.pdf` junto con la explicación de cada parte. Las capturas
+muestran los formularios de estudiante y docente, los convenios, la aplicación
+del convenio, los mensajes de error de las validaciones, el ahorro, los
+préstamos y la aprobación de pedidos mayores de 50,000.
 
 ## Estructura del repositorio
 
@@ -216,8 +220,13 @@ custom_addons/
 ├── unicah_prestamos/
 └── docs/
     ├── justificacion.md
+    ├── justificacion.pdf
     ├── justificacion_borrador.pdf
     ├── capturas.md
+    ├── capturas/
+    │   ├── 01_estudiante_unicah.png
+    │   ├── 02_docente_unicah.png
+    │   └── ... (26 capturas)
     └── generar_pdf.py
 ```
 
@@ -238,6 +247,8 @@ El entregable se preparó con una secuencia de commits que refleja el desarrollo
 2. Partes 1 a 5 en `tienda_unicah`.
 3. Parte 6 en `unicah_prestamos`.
 4. Documentación, README y guía de capturas.
+5. PDF borrador con la estructura de la justificación.
+6. Capturas reales de la interfaz y justificación final en PDF.
 
 ## Autor
 

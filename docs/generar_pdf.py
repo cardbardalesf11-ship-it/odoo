@@ -1,11 +1,10 @@
-"""Genera un PDF de justificación a partir de justificacion.md.
+"""Genera el PDF de justificación a partir de justificacion.md.
 
 Uso:
     /Users/carlosdaniel/Documents/odoo/.venv/bin/python docs/generar_pdf.py
 
-El PDF resultante es un borrador con los espacios para las capturas. Cuando las
-capturas reales estén disponibles, se pueden insertar en el Markdown y volver a
-ejecutar este script.
+El script inserta las capturas reales de docs/capturas/ y genera el PDF final
+en docs/justificacion.pdf.
 """
 
 import re
@@ -16,8 +15,11 @@ from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
+from reportlab.lib.utils import ImageReader
 from reportlab.platypus import (
     HRFlowable,
+    Image,
+    KeepTogether,
     PageBreak,
     Paragraph,
     Preformatted,
@@ -29,7 +31,10 @@ from reportlab.platypus import (
 
 BASE = Path(__file__).resolve().parent
 ORIGEN = BASE / "justificacion.md"
-DESTINO = BASE / "justificacion_borrador.pdf"
+DESTINO = BASE / "justificacion.pdf"
+
+ANCHO_MAXIMO_CAPTURA = 15.5 * cm
+ALTO_MAXIMO_CAPTURA = 10.5 * cm
 
 
 def texto_en_linea(texto):
@@ -175,6 +180,18 @@ styles.add(
 )
 styles.add(
     ParagraphStyle(
+        name="PieCaptura",
+        parent=styles["BodyText"],
+        fontSize=8.5,
+        leading=11,
+        alignment=TA_CENTER,
+        textColor=colors.HexColor("#4a4a4a"),
+        spaceBefore=3,
+        spaceAfter=10,
+    )
+)
+styles.add(
+    ParagraphStyle(
         name="TableHeader",
         parent=styles["BodyText"],
         fontSize=8.5,
@@ -228,6 +245,36 @@ def construir_historia():
             historia.append(Preformatted("\n".join(codigo), styles["Codigo"]))
             indice += 1
             continue
+
+        if linea.strip().startswith("![") and linea.strip().endswith(")"):
+            coincidencia = re.fullmatch(r"!\[(.*?)\]\((.+?)\)", linea.strip())
+            if coincidencia:
+                descripcion, ruta = coincidencia.groups()
+                archivo = (BASE / ruta).resolve()
+                if archivo.exists():
+                    ancho, alto = ImageReader(str(archivo)).getSize()
+                    escala = min(
+                        ANCHO_MAXIMO_CAPTURA / ancho,
+                        ALTO_MAXIMO_CAPTURA / alto,
+                    )
+                    imagen = Image(
+                        str(archivo),
+                        width=ancho * escala,
+                        height=alto * escala,
+                    )
+                    historia.append(
+                        KeepTogether(
+                            [
+                                imagen,
+                                Paragraph(
+                                    texto_en_linea(descripcion),
+                                    styles["PieCaptura"],
+                                ),
+                            ]
+                        )
+                    )
+                    indice += 1
+                    continue
 
         if linea.startswith("# "):
             historia.append(
@@ -301,7 +348,7 @@ def construir_historia():
             siguiente = lineas[indice].strip()
             if (
                 not siguiente
-                or siguiente.startswith(("#", ">", "```", "|", "- "))
+                or siguiente.startswith(("#", ">", "```", "|", "- ", "!"))
                 or re.match(r"^\d+\.\s", siguiente)
                 or siguiente == "---"
             ):

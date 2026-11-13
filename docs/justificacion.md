@@ -23,8 +23,11 @@ La idea fue mantener el trabajo anterior funcionando y agregar lo que pedía el
 examen de forma ordenada. Cada módulo tiene su propio manifiesto, sus modelos,
 sus vistas y sus permisos. `ventas_unicah` no se modificó.
 
-> **Espacio para captura de portada:**  
-> `[Insertar aquí una captura general de Odoo con los módulos instalados o el menú de Ventas.]`
+Todas las capturas de este documento se tomaron directamente de la interfaz de
+Odoo 20 en la base `odoo20_practica`, el 13 de noviembre de 2026, con el usuario
+administrador. Los datos que aparecen (Ana Lucía López, José Ramón Martínez y
+María Fernanda Cruz) son registros de prueba creados para demostrar el
+funcionamiento y no pertenecen a personas reales.
 
 ---
 
@@ -50,11 +53,9 @@ La validación en Python revisa que la cuenta tenga exactamente 10 dígitos
 numéricos. Si alguien escribe una cuenta de 8 dígitos, Odoo muestra un mensaje
 de error y no deja guardar el contacto.
 
-> **Espacio para captura 1:**  
-> `[Insertar aquí la pestaña UNICAH de un estudiante con tipo de cliente, número de cuenta y carrera.]`
+![Pestaña UNICAH de un estudiante, con tipo de cliente, número de cuenta y carrera.](capturas/01_estudiante_unicah.png)
 
-> **Espacio para captura 2:**  
-> `[Insertar aquí la pestaña UNICAH de un docente, donde no se ven número de cuenta ni carrera.]`
+![Pestaña UNICAH de un docente: no se muestran número de cuenta ni carrera.](capturas/02_docente_unicah.png)
 
 ---
 
@@ -89,11 +90,9 @@ Dejé dos registros iniciales:
 
 El menú **Convenios UNICAH** aparece dentro de **Ventas > Configuración**.
 
-> **Espacio para captura 3:**  
-> `[Insertar aquí la lista de convenios con el convenio estudiantil y el docente.]`
+![Lista de convenios con el convenio estudiantil y el docente.](capturas/03_lista_convenios.png)
 
-> **Espacio para captura 4:**  
-> `[Insertar aquí el formulario de un convenio administrativo creado durante la prueba.]`
+![Formulario de un convenio administrativo creado durante la prueba.](capturas/04_convenio_administrativo.png)
 
 ---
 
@@ -122,11 +121,11 @@ El campo `convenio_aplicado` controla la visibilidad del botón y también evita
 que el mismo convenio se aplique dos veces. Si el usuario cambia de convenio,
 el campo se reinicia para que pueda tomar una nueva decisión.
 
-> **Espacio para captura 5:**  
-> `[Insertar aquí una cotización de un estudiante con el convenio propuesto.]`
+![Cotización de un estudiante con el convenio propuesto y el botón Aplicar convenio.](capturas/06_convenio_propuesto.png)
 
-> **Espacio para captura 6:**  
-> `[Insertar aquí el pedido con dos productos y una sección, después de aplicar el convenio, mostrando el descuento y el mensaje del chatter.]`
+![Pedido con productos y una sección después de aplicar el convenio: descuento en las líneas y botón oculto.](capturas/08_pedido_convenio_aplicado.png)
+
+![Mensaje del chatter donde se registra la aplicación del convenio.](capturas/08b_chatter_convenio.png)
 
 ---
 
@@ -161,20 +160,15 @@ ya existía.
 Los pedidos de docentes y de otros tipos de cliente no tienen el límite de 10
 unidades.
 
-> **Espacio para captura 7:**  
-> `[Insertar aquí el error al guardar un estudiante con una cuenta de 8 dígitos.]`
+![Error al guardar un estudiante con una cuenta de 8 dígitos.](capturas/09_error_cuenta_8_digitos.png)
 
-> **Espacio para captura 8:**  
-> `[Insertar aquí el error al crear un convenio de 50 %.]`
+![Error al guardar un convenio con 50 %, por encima del máximo permitido.](capturas/10_error_convenio_50.png)
 
-> **Espacio para captura 9:**  
-> `[Insertar aquí el error al crear un convenio con fechas invertidas.]`
+![Error al guardar un convenio con fecha final anterior a la fecha inicial.](capturas/11_error_fechas_convenio.png)
 
-> **Espacio para captura 10:**  
-> `[Insertar aquí el error al confirmar un pedido de estudiante con 12 unidades.]`
+![Error al confirmar un pedido de estudiante con 12 unidades.](capturas/12_error_limite_estudiante.png)
 
-> **Espacio para captura 11:**  
-> `[Insertar aquí un pedido de docente con 12 unidades ya confirmado.]`
+![Pedido de docente con 12 unidades ya confirmado: el límite no aplica.](capturas/13_docente_12_unidades.png)
 
 ---
 
@@ -197,14 +191,13 @@ En el formulario se ve el ahorro y en la lista de pedidos agregué la columna co
 su total al pie. También agregué el filtro **Con convenio** y la agrupación por
 convenio.
 
-> **Espacio para captura 12:**  
-> `[Insertar aquí el formulario del pedido mostrando el monto de ahorro.]`
+![Formulario del pedido mostrando el monto de ahorro por convenio.](capturas/14_ahorro_formulario.png)
 
-> **Espacio para captura 13:**  
-> `[Insertar aquí la lista de pedidos con la columna de ahorro y su total.]`
+![Lista de pedidos con la columna Ahorro por convenio y su total al pie.](capturas/15_ahorro_lista.png)
 
-> **Espacio para captura 14:**  
-> `[Insertar aquí el filtro Con convenio y la agrupación por convenio.]`
+![Filtro Con convenio aplicado en la búsqueda de pedidos.](capturas/16_filtro_con_convenio.png)
+
+![Lista de pedidos agrupada por convenio.](capturas/17_agrupacion_convenio.png)
 
 ---
 
@@ -240,17 +233,17 @@ siempre queda claro quién los tiene, cuándo deben devolverse y en qué estado
 están. Con este módulo se puede consultar esa información sin usar una hoja de
 cálculo aparte.
 
-> **Espacio para captura 15:**  
-> `[Insertar aquí el formulario de un préstamo con las fechas y los días calculados.]`
+![Formulario de un préstamo con las fechas y los días calculados.](capturas/18_prestamo_formulario.png)
 
-> **Espacio para captura 16:**  
-> `[Insertar aquí el error cuando la fecha de devolución es anterior a la fecha del préstamo.]`
+![Error cuando la fecha de devolución es anterior a la fecha del préstamo.](capturas/19_error_fechas_prestamo.png)
 
-> **Espacio para captura 17:**  
-> `[Insertar aquí la lista de préstamos con los estados.]`
+![Lista de préstamos con sus estados y días calculados.](capturas/20_lista_prestamos.png)
 
-> **Espacio para captura 18:**  
-> `[Insertar aquí el menú Préstamos UNICAH y la pestaña de préstamos en un contacto.]`
+![Menú Préstamos UNICAH con la opción Préstamos de equipo.](capturas/21_menu_prestamos.png)
+
+![Pestaña Préstamos UNICAH dentro de un contacto, con sus préstamos relacionados.](capturas/22_prestamos_en_contacto.png)
+
+![Préstamo entregado con los botones para cambiar de estado.](capturas/23_estado_prestamo.png)
 
 ---
 
@@ -270,11 +263,13 @@ La prueba automatizada `test_ventas_unicah_conserva_canal_y_aprobacion`
 comprobó que el canal de venta se sigue calculando y que un pedido mayor de
 50,000 sigue necesitando aprobación antes de confirmarse.
 
-> **Espacio para captura 19:**  
-> `[Insertar aquí un pedido mayor de 50,000 con el aviso de aprobación y el botón Aprobar.]`
+![Contacto con el campo Canal preferido de ventas_unicah.](capturas/24_canal_preferido.png)
 
-> **Espacio para captura 20:**  
-> `[Insertar aquí el pedido aprobado y confirmado.]`
+![Pedido mayor de 50,000 con el aviso de aprobación y el botón Aprobar.](capturas/25_pedido_requiere_aprobacion.png)
+
+![Pedido aprobado, con el usuario que aprobó.](capturas/26_pedido_aprobado.png)
+
+![Pedido confirmado después de la aprobación.](capturas/26b_pedido_confirmado.png)
 
 ---
 
@@ -359,11 +354,10 @@ descuento de las líneas, el mensaje del chatter, las validaciones de porcentaje
 y fechas, el límite de 10 unidades, el pedido de docente sin límite, el cálculo
 del ahorro, el préstamo, los días calculados y el flujo de estados.
 
-Las capturas de la interfaz se agregarán después de tomarlas en Odoo. En este
-documento no se afirma que ya existan.
-
-> **Espacio para captura 21:**  
-> `[Insertar aquí una captura de la terminal con el resultado de las pruebas automatizadas, si el docente lo solicita.]`
+Las capturas anteriores se tomaron en la interfaz real de Odoo y muestran los
+casos principales del examen. El resultado de las pruebas automatizadas se
+guarda en la salida de la consola y se documenta en el `README.md` del
+repositorio.
 
 ---
 
@@ -375,5 +369,6 @@ trabajó en `unicah_prestamos`. Lo más importante fue integrar las validaciones
 nuevas sin romper la aprobación de pedidos mayores de 50,000 y sin modificar el
 código fuente de Odoo.
 
-Las pruebas automatizadas pasaron, y las capturas de la interfaz se tomarán en
-el navegador para completar la justificación visual del entregable.
+Las pruebas automatizadas pasaron y las capturas de la interfaz quedaron
+integradas en esta justificación, de modo que cada parte del examen tiene
+evidencia visual de su funcionamiento.

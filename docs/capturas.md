@@ -3,6 +3,12 @@
 Esta lista sirve para tomar las capturas reales dentro de Odoo. No se deben
 inventar ni reutilizar imágenes de otros proyectos.
 
+> **Nota sobre el entregable:** se tomaron 26 capturas reales (01 a 04, 06,
+> 08, 08b, 09 a 26 y 26b). Las capturas 05 (permisos con usuario vendedor) y 27
+> (resultado de las pruebas en la terminal) eran opcionales y no se incluyeron.
+> Los permisos se comprueban en las pruebas automatizadas y el resultado de la
+> suite está documentado en el `README.md`.
+
 ## Recomendaciones generales
 
 - Iniciar Odoo con la base `odoo20_practica` y abrir
