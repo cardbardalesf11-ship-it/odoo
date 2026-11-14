@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_unicah_prestamo_list" model="ir.ui.view">
+        <field name="name">unicah.prestamo.list</field>
+        <field name="model">unicah.prestamo</field>
+        <field name="arch" type="xml">
+            <list
+                string="Préstamos de equipo"
+                decoration-danger="estado == 'vencido'"
+                decoration-success="estado == 'devuelto'"
+                decoration-info="estado == 'entregado'"
+            >
+                <field name="name"/>
+                <field name="solicitante_id"/>
+                <field name="equipo"/>
+                <field name="fecha_prestamo"/>
+                <field name="fecha_devolucion"/>
+                <field name="dias_prestamo"/>
+                <field name="estado" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_unicah_prestamo_form" model="ir.ui.view">
+        <field name="name">unicah.prestamo.form</field>
+        <field name="model">unicah.prestamo</field>
+        <field name="arch" type="xml">
+            <form string="Préstamo de equipo">
+                <header>
+                    <button
+                        name="action_entregar"
+                        type="object"
+                        string="Entregar"
+                        class="btn-primary"
+                        invisible="estado != 'solicitado'"
+                    />
+                    <button
+                        name="action_devolver"
+                        type="object"
+                        string="Devolver"
+                        class="btn-primary"
+                        invisible="estado not in ('entregado', 'vencido')"
+                    />
+                    <button
+                        name="action_marcar_vencido"
+                        type="object"
+                        string="Marcar vencido"
+                        invisible="estado != 'entregado'"
+                    />
+                    <field
+                        name="estado"
+                        widget="statusbar"
+                        statusbar_visible="solicitado,entregado,vencido,devuelto"
+                        readonly="1"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Referencia"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="solicitante_id"/>
+                            <field name="equipo" placeholder="Ej. Laptop Dell, proyector Epson"/>
+                        </group>
+                        <group>
+                            <field name="fecha_prestamo"/>
+                            <field name="fecha_devolucion"/>
+                            <field name="dias_prestamo"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_unicah_prestamo_search" model="ir.ui.view">
+        <field name="name">unicah.prestamo.search</field>
+        <field name="model">unicah.prestamo</field>
+        <field name="arch" type="xml">
+            <search string="Buscar préstamos">
+                <field name="name"/>
+                <field name="solicitante_id"/>
+                <field name="equipo"/>
+                <filter
+                    name="filtro_solicitados"
+                    string="Solicitados"
+                    domain="[('estado', '=', 'solicitado')]"
+                />
+                <filter
+                    name="filtro_entregados"
+                    string="Entregados"
+                    domain="[('estado', '=', 'entregado')]"
+                />
+                <filter
+                    name="filtro_devueltos"
+                    string="Devueltos"
+                    domain="[('estado', '=', 'devuelto')]"
+                />
+                <filter
+                    name="filtro_vencidos"
+                    string="Vencidos"
+                    domain="[('estado', '=', 'vencido')]"
+                />
+                <group>
+                    <filter
+                        name="agrupar_estado"
+                        string="Estado"
+                        context="{'group_by': 'estado'}"
+                    />
+                    <filter
+                        name="agrupar_solicitante"
+                        string="Solicitante"
+                        context="{'group_by': 'solicitante_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_unicah_prestamo" model="ir.actions.act_window">
+        <field name="name">Préstamos de equipo</field>
+        <field name="res_model">unicah.prestamo</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre el primer préstamo de equipo
+            </p>
+            <p>
+                Controle la entrega y devolución de laptops, proyectores
+                y otros recursos de la universidad.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_unicah_prestamos_root"
+        name="Préstamos UNICAH"
+        sequence="75"
+        groups="sales_team.group_sale_salesman"
+    />
+
+    <menuitem
+        id="menu_unicah_prestamo"
+        name="Préstamos de equipo"
+        parent="menu_unicah_prestamos_root"
+        action="action_unicah_prestamo"
+        sequence="10"
+    />
+
+</odoo>
