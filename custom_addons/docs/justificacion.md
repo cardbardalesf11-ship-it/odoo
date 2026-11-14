@@ -1,6 +1,6 @@
 ## Universidad Católica de Honduras
 
-# Justificación del Examen Final – Programación de Negocios UNICAH
+# Justificación del Examen II – Programación de Negocios UNICAH
 
 ## Portada
 
@@ -14,7 +14,7 @@
 
 ## Introducción
 
-Para el examen final aproveché el módulo `ventas_unicah` que ya había trabajado
+Para el Examen II aproveché el módulo `ventas_unicah` que ya había trabajado
 en la práctica anterior. En lugar de borrarlo o hacer otro módulo desde cero,
 lo conservé y construí dos módulos nuevos: `tienda_unicah` para las partes 1 a 5
 y `unicah_prestamos` para la parte 6.
