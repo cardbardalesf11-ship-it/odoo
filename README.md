@@ -1,10 +1,10 @@
 ## Universidad Católica de Honduras
 
-# Examen Final – Programación de Negocios UNICAH
+# Examen II – Programación de Negocios UNICAH
 
 Proyecto de personalización de Odoo 20 para la Universidad Católica de Honduras
 (UNICAH). El entregable reúne la práctica anterior de Ventas y los módulos
-desarrollados para el examen final.
+desarrollados para el Examen II.
 
 ## Datos del estudiante
 
@@ -22,10 +22,10 @@ El proyecto está formado por tres módulos independientes que se complementan:
 
 1. **`ventas_unicah`**: práctica anterior de personalización de Ventas. Se
    conservó sin cambios.
-2. **`tienda_unicah`**: partes 1 a 5 del examen final. Agrega los datos
+2. **`tienda_unicah`**: partes 1 a 5 del Examen II. Agrega los datos
    universitarios del cliente, los convenios, la aplicación del convenio en el
    pedido, las validaciones y el cálculo del ahorro.
-3. **`unicah_prestamos`**: parte 6 del examen final. Propuesta propia para
+3. **`unicah_prestamos`**: parte 6 del Examen II. Propuesta propia para
    controlar el préstamo de equipos universitarios.
 
 El repositorio se inicializa dentro de `custom_addons` porque esa carpeta ya

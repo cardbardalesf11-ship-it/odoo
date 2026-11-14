@@ -86,7 +86,7 @@ def numero_pagina(canvas, doc):
     canvas.drawString(
         2 * cm,
         1.2 * cm,
-        "Examen Final – Programación de Negocios UNICAH – Carlos Daniel Bardales",
+        "Examen II – Programación de Negocios UNICAH – Carlos Daniel Bardales",
     )
     canvas.drawRightString(
         letter[0] - 2 * cm,
@@ -370,7 +370,7 @@ def main():
         rightMargin=2 * cm,
         topMargin=2 * cm,
         bottomMargin=2 * cm,
-        title="Justificación del Examen Final – Programación de Negocios UNICAH",
+        title="Justificación del Examen II – Programación de Negocios UNICAH",
         author="Carlos Daniel Bardales",
     )
     documento.build(
