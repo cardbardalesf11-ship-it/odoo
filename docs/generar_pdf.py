@@ -41,6 +41,11 @@ def texto_en_linea(texto):
     texto = texto.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     texto = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", texto)
     texto = re.sub(r"`(.+?)`", r"<font face='Courier'>\1</font>", texto)
+    texto = re.sub(
+        r"(https?://[^\s<]+)",
+        r'<link href="\1" color="#1155cc"><u>\1</u></link>',
+        texto,
+    )
     return texto
 
 

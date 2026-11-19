@@ -12,6 +12,8 @@
 | Asignatura | Programación de Negocios |
 | Docente | Ingeniero Ludwing Navarro |
 
+**Repositorio GitHub:** https://github.com/cardbardalesf11-ship-it/odoo/tree/practica/custom_addons
+
 ## Introducción
 
 Para el Examen II aproveché el módulo `ventas_unicah` que ya había trabajado
